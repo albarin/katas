@@ -1,6 +1,6 @@
 <?php
 
-namespace GreenRooms\FizzBuzz;
+namespace GreenRooms\FizzBuzz\VersionB;
 
 class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,6 +12,9 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->fizzBuzz = new FizzBuzz();
+        $this->fizzBuzz->addRule(new FizzBuzzRule());
+        $this->fizzBuzz->addRule(new BuzzRule());
+        $this->fizzBuzz->addRule(new FizzRule());
     }
 
     public function testGenerate()
@@ -20,21 +23,6 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
             [1, 2, 'Fizz', 4, 'Buzz','Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'FizzBuzz'],
             $this->fizzBuzz->generateUpTo(15)
         );
-    }
-
-    public function testOneReturnsOne()
-    {
-        $this->assertEquals(1, $this->fizzBuzz->replace(1));
-    }
-
-    public function testThreeReturnsFizz()
-    {
-        $this->assertEquals('Fizz', $this->fizzBuzz->replace(3));
-    }
-
-    public function testFiveReturnsBuzz()
-    {
-        $this->assertEquals('Buzz', $this->fizzBuzz->replace(5));
     }
 
     /**
@@ -64,6 +52,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     public function multiplesOfThree()
     {
         return [
+            'three' => [3],
             'six' => [6],
             'nine' => [9],
             'twelve' => [12],

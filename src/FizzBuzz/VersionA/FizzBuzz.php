@@ -1,6 +1,6 @@
 <?php
 
-namespace GreenRooms\FizzBuzz;
+namespace GreenRooms\FizzBuzz\VersionA;
 
 class FizzBuzz
 {
